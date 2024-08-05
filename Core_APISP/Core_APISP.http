@@ -1,0 +1,6 @@
+@Core_APISP_HostAddress = http://localhost:5231
+
+GET {{Core_APISP_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
