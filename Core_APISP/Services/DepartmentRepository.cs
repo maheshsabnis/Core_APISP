@@ -49,6 +49,10 @@ public class DepartmentRepository : IServiceRepository<Department>
         };
             await _context.Database.ExecuteSqlRawAsync("EXEC sp_CreateDepartment @DeptNo, @DeptName, @Location, @Capacity", parameters);
         }
+        catch (SqlException ex)
+        {
+            throw ex;
+        }
         catch (Exception ex)
         {
             throw ex;
@@ -68,6 +72,10 @@ public class DepartmentRepository : IServiceRepository<Department>
         };
             await _context.Database.ExecuteSqlRawAsync("EXEC sp_UpdateDepartment @DeptNo, @DeptName, @Location, @Capacity", parameters);
         }
+        catch (SqlException ex)
+        {
+            throw ex;
+        }
         catch (Exception ex)
         {
             throw ex;
@@ -80,6 +88,10 @@ public class DepartmentRepository : IServiceRepository<Department>
         {
             var parameter = new SqlParameter("@DeptNo", id);
             await _context.Database.ExecuteSqlRawAsync("EXEC sp_DeleteDepartment @DeptNo", parameter);
+        }
+        catch (SqlException ex)
+        {
+            throw ex;
         }
         catch (Exception ex)
         {
